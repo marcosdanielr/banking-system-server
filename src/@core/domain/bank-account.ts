@@ -8,4 +8,12 @@ export class BankAccount {
     this.balance = balance;
     this.account_number = account_number;
   }
+
+  debit(amount: number): void {
+    this.balance += amount;
+  }
+
+  credit(amount: number): void {
+    this.balance += amount;
+  }
 }
