@@ -19,7 +19,7 @@ export class BankAccountsService {
   ): Promise<BankAccountSchema> {
     const bankAccount = this.repository.create({
       account_number: createBankAccountDto.account_number,
-      balance: 200,
+      balance: 0,
     });
 
     await this.repository.insert(bankAccount);
