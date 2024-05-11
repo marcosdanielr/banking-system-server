@@ -1,4 +1,5 @@
 import { IBankAccountRepository } from '../infra/db/bank-account.repository';
+import { BankAccountSchema } from '../infra/db/bank-account.schema';
 import { BankAccount } from './bank-account';
 import { TransferService } from './transfer.service';
 
@@ -29,5 +30,9 @@ export class BankAccountService {
 
     await this.bankAccountRepository.update(bankAccountSrc);
     await this.bankAccountRepository.update(bankAccountDest);
+  }
+
+  async findAll(): Promise<BankAccountSchema[]> {
+    return await this.bankAccountRepository.findAll();
   }
 }

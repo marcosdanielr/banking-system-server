@@ -22,4 +22,8 @@ export class BankAccountTypeOrmRepository implements IBankAccountRepository {
 
     return new BankAccount(model.balance, model.account_number, model.id);
   }
+
+  async findAll() {
+    return await this.typeOrmRepository.find();
+  }
 }
