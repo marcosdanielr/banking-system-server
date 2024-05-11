@@ -13,4 +13,10 @@ describe('Bank Account Unit Tests', () => {
     bankAccount.debit(50);
     expect(bankAccount.balance).toEqual(50);
   });
+
+  it('should be able credit an account', () => {
+    const bankAccount = new BankAccount('1', 0, '22451');
+    bankAccount.credit(120);
+    expect(bankAccount.balance).toEqual(120);
+  });
 });
