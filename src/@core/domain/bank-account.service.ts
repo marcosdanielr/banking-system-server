@@ -14,17 +14,14 @@ export class BankAccountService {
   }
 
   async transfer(
-    account_number_src: BankAccount,
-    account_number_dest: BankAccount,
+    account_number_src: string,
+    account_number_dest: string,
     amount: number,
   ) {
-    const bankAccountSrc = await this.bankAccountRepository.findByAccountNumber(
-      account_number_src.account_number,
-    );
+    const bankAccountSrc =
+      await this.bankAccountRepository.findByAccountNumber(account_number_src);
     const bankAccountDest =
-      await this.bankAccountRepository.findByAccountNumber(
-        account_number_dest.account_number,
-      );
+      await this.bankAccountRepository.findByAccountNumber(account_number_dest);
 
     const transferService = new TransferService();
 
