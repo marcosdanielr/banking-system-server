@@ -1,5 +1,5 @@
-import { BankAccount } from './domain/bank-account';
-import { IBankAccountRepository } from './domain/bank-account.repository';
+import { BankAccount } from './bank-account';
+import { IBankAccountRepository } from './bank-account.repository';
 
 export class BankAccountService {
   constructor(private bankAccountRepository: IBankAccountRepository) {}
