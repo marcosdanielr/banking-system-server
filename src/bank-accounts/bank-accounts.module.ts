@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { BankAccountsService } from './bank-accounts.service';
 import { BankAccountsController } from './bank-accounts.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BankAccountTypeOrm } from '../@core/infra/db/bank-account.schema';
+import { BankAccountSchema } from '../@core/infra/db/bank-account.schema';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([BankAccountTypeOrm])],
+  imports: [TypeOrmModule.forFeature([BankAccountSchema])],
   controllers: [BankAccountsController],
   providers: [BankAccountsService],
 })

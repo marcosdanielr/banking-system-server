@@ -1,14 +1,14 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateBankAccountDto } from './dto/create-bank-account.dto';
 import { DataSource, Repository } from 'typeorm';
-import { BankAccountTypeOrm } from '../@core/infra/db/bank-account.schema';
+import { BankAccountSchema } from '../@core/infra/db/bank-account.schema';
 import { InjectRepository, getDataSourceToken } from '@nestjs/typeorm';
 
 @Injectable()
 export class BankAccountsService {
   constructor(
-    @InjectRepository(BankAccountTypeOrm)
-    private repository: Repository<BankAccountTypeOrm>,
+    @InjectRepository(BankAccountSchema)
+    private repository: Repository<BankAccountSchema>,
 
     @Inject(getDataSourceToken())
     private dataSource: DataSource,
@@ -16,7 +16,7 @@ export class BankAccountsService {
 
   async create(
     createBankAccountDto: CreateBankAccountDto,
-  ): Promise<BankAccountTypeOrm> {
+  ): Promise<BankAccountSchema> {
     const bankAccount = this.repository.create({
       account_number: createBankAccountDto.account_number,
       balance: 200,
@@ -26,11 +26,11 @@ export class BankAccountsService {
     return bankAccount;
   }
 
-  findAll(): Promise<BankAccountTypeOrm[]> {
+  findAll(): Promise<BankAccountSchema[]> {
     return this.repository.find();
   }
 
-  findOne(id: string): Promise<BankAccountTypeOrm> {
+  findOne(id: string): Promise<BankAccountSchema> {
     return this.repository.findOneBy({ id });
   }
 
