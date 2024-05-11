@@ -1,33 +1,29 @@
 import { randomUUID } from 'node:crypto';
 
 export class BankAccount {
-  #id: string;
-  #balance: number;
-  #account_number: string;
+  readonly id: string;
+  private _balance: number;
+  readonly account_number: string;
 
   constructor(balance: number, account_number: string, id?: string) {
-    this.#id = id ?? randomUUID();
-    this.#balance = balance;
-    this.#account_number = account_number;
+    this.id = id ?? randomUUID();
+    this._balance = balance;
+    this.account_number = account_number;
   }
 
   debit(amount: number): void {
-    this.#balance -= amount;
+    this.balance -= amount;
   }
 
   credit(amount: number): void {
-    this.#balance += amount;
-  }
-
-  get id(): string {
-    return this.#id;
+    this.balance += amount;
   }
 
   get balance(): number {
-    return this.#balance;
+    return this._balance;
   }
 
-  get account_number(): string {
-    return this.#account_number;
+  private set balance(balance: number) {
+    this._balance = balance;
   }
 }
