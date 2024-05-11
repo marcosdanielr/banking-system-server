@@ -7,4 +7,10 @@ describe('Bank Account Unit Tests', () => {
     expect(bankAccount.balance).toEqual(0);
     expect(bankAccount.account_number).toEqual('22451');
   });
+
+  it('should be able debit an account', () => {
+    const bankAccount = new BankAccount('1', 0, '22451');
+    bankAccount.debit(50);
+    expect(bankAccount.balance).toEqual(50);
+  });
 });
