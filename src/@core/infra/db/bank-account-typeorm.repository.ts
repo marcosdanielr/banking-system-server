@@ -1,5 +1,5 @@
 import { BankAccount } from 'src/@core/domain/bank-account';
-import { BankAccountSchema } from 'src/bank-accounts/entities/bank-account.entity';
+import { BankAccountSchema } from './bank-account.schema';
 import { IBankAccountRepository } from 'src/@core/domain/bank-account.repository';
 import { Repository } from 'typeorm';
 
