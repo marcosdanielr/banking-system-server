@@ -12,12 +12,14 @@ export class BankAccountTypeOrmRepository implements IBankAccountRepository {
   }
 
   async update(bankAccount: BankAccount) {
-    await this.typeOrmRepository.update(bankAccount.id, bankAccount);
+    await this.typeOrmRepository.update(bankAccount.id, {
+      balance: bankAccount.balance,
+    });
   }
 
   async findByAccountNumber(account_number: string) {
     const model = await this.typeOrmRepository.findOneBy({ account_number });
 
-    return new BankAccount(model.id, model.balance, model.account_number);
+    return new BankAccount(model.balance, model.account_number, model.id);
   }
 }

@@ -1,10 +1,12 @@
+import { randomUUID } from 'node:crypto';
+
 export class BankAccount {
   #id: string;
   #balance: number;
   #account_number: string;
 
-  constructor(id: string, balance: number, account_number: string) {
-    this.#id = id;
+  constructor(balance: number, account_number: string, id?: string) {
+    this.#id = id ?? randomUUID();
     this.#balance = balance;
     this.#account_number = account_number;
   }
@@ -16,8 +18,6 @@ export class BankAccount {
   credit(amount: number): void {
     this.#balance += amount;
   }
-
-  transfer(amount: number, target: BankAccount): void {}
 
   get id(): string {
     return this.#id;

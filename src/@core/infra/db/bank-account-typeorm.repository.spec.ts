@@ -24,14 +24,13 @@ describe('Bank Account Repository Test', () => {
   });
 
   it('should be able insert a new bank account', async () => {
-    const bankAccount = new BankAccount('123', 100, '1111-11');
+    const bankAccount = new BankAccount(100, '1111-11');
     await repository.insert(bankAccount);
 
     const findAccountResponse = await typeOrmRepository.findOneBy({
       account_number: '1111-11',
     });
 
-    expect(findAccountResponse.id).toBe('123');
     expect(findAccountResponse.balance).toBe(100);
     expect(findAccountResponse.account_number).toBe('1111-11');
   });

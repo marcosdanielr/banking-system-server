@@ -6,7 +6,7 @@ export class BankAccountService {
   constructor(private bankAccountRepository: IBankAccountRepository) {}
 
   async create(account_number: string): Promise<BankAccount> {
-    const bankAccount = new BankAccount('123', 0, account_number);
+    const bankAccount = new BankAccount(0, account_number);
 
     this.bankAccountRepository.insert(bankAccount);
 
