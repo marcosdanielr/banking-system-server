@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateBankAccountDto } from './dto/create-bank-account.dto';
 import { DataSource, Repository } from 'typeorm';
-import { BankAccountTypeOrm } from '../@core/infra/db/bank-account.entity';
+import { BankAccountTypeOrm } from '../@core/infra/db/bank-account.schema';
 import { InjectRepository, getDataSourceToken } from '@nestjs/typeorm';
 
 @Injectable()
