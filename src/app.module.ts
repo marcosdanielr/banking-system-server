@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BankAccountsModule } from './bank-accounts/bank-accounts.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BankAccount } from './bank-accounts/entities/bank-account.entity';
+import { BankAccountTypeOrm } from './@core/infra/db/bank-account.entity';
 
 @Module({
   imports: [
@@ -12,11 +12,11 @@ import { BankAccount } from './bank-accounts/entities/bank-account.entity';
       database: __dirname + '/db.sqlite',
       synchronize: true,
       logging: true,
-      entities: [BankAccount],
+      entities: [BankAccountTypeOrm],
     }),
     BankAccountsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { } 
+export class AppModule {}
